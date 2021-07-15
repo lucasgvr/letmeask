@@ -5,6 +5,8 @@ import { database } from "../services/firebase"
 
 import "../styles/checkPermission.scss"
 
+import toast, { Toaster } from "react-hot-toast"
+
 export function CheckPermission() {
     const { user } = useAuth()
 
@@ -25,6 +27,7 @@ export function CheckPermission() {
 
         if (roomAuthorId === userId) {
             verified = true
+            toast.remove("permission")
             history.replace({
                 pathname: `/admin/rooms/${roomId}`,
                 state: {
@@ -34,7 +37,10 @@ export function CheckPermission() {
                 }
             })
         } else {
-            history.push("/")
+            toast.error("You don't have permission for this room", {
+                id: "permission"
+            })
+                history.push("/")
         }
     }
 

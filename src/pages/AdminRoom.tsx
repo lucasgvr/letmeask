@@ -50,6 +50,10 @@ export function AdminRoom() {
 
     const { questions, title } = useRoom(roomId)
 
+    const [questionModalIsOpen, setQuestionModalIsOpen] = useState(false)
+    const [closeRoomModalIsOpen, setCloseRoomModalIsOpen] = useState(false)
+    const [gloalQuestionId, setGlobalQuestionId] = useState("")
+
     async function handleCloseRoom() {
         if (roomAuthorId === userId) {
             await database.ref(`rooms/${roomId}`).update({
@@ -123,10 +127,6 @@ export function AdminRoom() {
             toast.error("Permission denied")
         }
     }
-
-    const [questionModalIsOpen, setQuestionModalIsOpen] = useState(false)
-    const [closeRoomModalIsOpen, setCloseRoomModalIsOpen] = useState(false)
-    const [gloalQuestionId, setGlobalQuestionId] = useState("")
 
     return (
         <div>
