@@ -51,6 +51,16 @@
         > div {
             display: flex;
             gap: 16px;
+
+            div {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+
+                img {
+                    margin-bottom: 6px;
+                }
+            }
         }
 
         button {
@@ -71,6 +81,23 @@
                     svg path {
                         stroke: #835afd;
                     }
+                }
+
+                &:disabled {
+                    opacity: 0.6;
+                    cursor: not-allowed;
+                }
+            }
+
+            &.answered {
+                svg circle, path {
+                    stroke: #835afd;
+                }
+            }
+
+            &.highlighted {
+                svg path {
+                    stroke: #835afd;
                 }
             }
 

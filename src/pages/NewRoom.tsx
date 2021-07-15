@@ -10,6 +10,7 @@ import { database } from "../services/firebase"
 import { useAuth } from "../hooks/useAuth"
 
 import "../styles/auth.scss"
+import toast from "react-hot-toast"
 
 export function NewRoom() {
     const { user } = useAuth()
@@ -32,7 +33,9 @@ export function NewRoom() {
             authorId: user?.id,
         })
 
-        history.push(`/rooms/${firebaseRoom.key}`)
+        toast.success("Room created")
+        
+        history.push(`/admin/rooms/${firebaseRoom.key}`)
     }
 
     return (

@@ -25,6 +25,10 @@
         color: #835afd;
     }
 
+    &.width {
+        width: 180px;
+    }
+
     &:not(:disabled):hover {
         filter: brightness(0.9);
     }
